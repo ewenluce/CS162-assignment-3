@@ -68,16 +68,20 @@ class LinkedList:
     # ------------------------------------------------------------------ #
 
     def insert_front(self, value: object) -> None:
-        """
-        TODO: Write this implementation
-        """
-        pass
+        new_node = SLNode(value)
+        new_node._next = self._head._next
+        self._head._next = new_node
+        self._size += 1
 
     def insert_back(self, value: object) -> None:
-        """
-        TODO: Write this implementation
-        """
-        pass
+        new_node = SLNode(value)
+
+        current = self._head
+        while current._next is not None:
+            current = current._next
+
+        current._next = new_node
+        self._size += 1
 
     def insert_at_index(self, index: int, value: object) -> None:
         """
