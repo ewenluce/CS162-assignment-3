@@ -71,7 +71,6 @@ class LinkedList:
         new_node = SLNode(value)
         new_node.next = self._head.next
         self._head.next = new_node
-        self._size += 1
 
     def insert_back(self, value: object) -> None:
         new_node = SLNode(value)
@@ -81,7 +80,6 @@ class LinkedList:
             current = current.next
 
         current.next = new_node
-        self._size += 1
 
     def insert_at_index(self, index: int, value: object) -> None:
         """
