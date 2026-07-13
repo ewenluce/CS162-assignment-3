@@ -110,6 +110,7 @@ class Queue:
 
         return self._sa.get(self._front)
 
+
     # The method below is optional, but recommended, to implement. #
     # You may alter it in any way you see fit.                     #
 
