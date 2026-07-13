@@ -1,9 +1,9 @@
-# Name:
-# OSU Email:
+# Name: Ewen Luce
+# OSU Email: lucee@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
+# Assignment: 3
+# Due Date: 7/9/26
+# Description: Implementation of a queue ADT class using a Sll
 
 
 from SLNode import SLNode
@@ -63,22 +63,32 @@ class Queue:
     # -----------------------------------------------------------------------
 
     def enqueue(self, value: object) -> None:
-        """
-        TODO: Write this implementation
-        """
-        pass
+        new_node = SLNode(value)
+
+        if self.is_empty():
+            self._head = new_node
+            self._tail = new_node
+        else:
+            self._tail.next = new_node
+            self._tail = new_node
 
     def dequeue(self) -> object:
-        """
-        TODO: Write this implementation
-        """
-        pass
+        if self.is_empty():
+            raise QueueException
+
+        value = self._head.value
+        self._head = self._head.next
+
+        if self._head is None:
+            self._tail = None
+
+        return value
 
     def front(self) -> object:
-        """
-        TODO: Write this implementation
-        """
-        pass
+        if self.is_empty():
+            raise QueueException
+
+        return self._head.value
 
 
 # ------------------- BASIC TESTING -----------------------------------------

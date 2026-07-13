@@ -1,9 +1,9 @@
-# Name:
-# OSU Email:
+# Name: Ewen Luce
+# OSU Email: lucee@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
+# Assignment: 3
+# Due Date: 7/9/26
+# Description: Implementation of a Stack ADT class using a Sll
 
 
 from SLNode import SLNode
@@ -62,22 +62,23 @@ class Stack:
     # -----------------------------------------------------------------------
 
     def push(self, value: object) -> None:
-        """
-        TODO: Write this implementation
-        """
-        pass
+        new_node = SLNode(value)
+        new_node.next = self._head
+        self._head = new_node
 
     def pop(self) -> object:
-        """
-        TODO: Write this implementation
-        """
-        pass
+        if self.is_empty():
+            raise StackException
+
+        value = self._head.value
+        self._head = self._head.next
+        return value
 
     def top(self) -> object:
-        """
-        TODO: Write this implementation
-        """
-        pass
+        if self.is_empty():
+            raise StackException
+
+        return self._head.value
 
 
 # ------------------- BASIC TESTING -----------------------------------------

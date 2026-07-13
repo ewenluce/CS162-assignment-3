@@ -1,9 +1,9 @@
-# Name:
-# OSU Email:
+# Name: Ewen Luce
+# OSU Email: lucee@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
+# Assignment: 3
+# Due Date: 7/9/26
+# Description: Implementation of a queue ADT class using a static array
 
 
 # Note: Changing any part of the pre-implemented methods (besides adding  #
