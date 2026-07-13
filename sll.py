@@ -1,9 +1,9 @@
-# Name:
-# OSU Email:
+# Name: Ewen Luce
+# OSU Email: lucee@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
+# Assignment: 3
+# Due Date: 7/9/26
+# Description: Implementation of a single linked list data structure.
 
 
 from SLNode import *
@@ -82,40 +82,82 @@ class LinkedList:
         current.next = new_node
 
     def insert_at_index(self, index: int, value: object) -> None:
-        """
-        TODO: Write this implementation
-        """
-        pass
+        if index < 0 or index > self.length():
+            raise SLLException
+
+        new_node = SLNode(value)
+
+        current = self._head
+        for _ in range(index):
+            current = current.next
+
+        new_node.next = current.next
+        current.next = new_node
 
     def remove_at_index(self, index: int) -> None:
-        """
-        TODO: Write this implementation
-        """
-        pass
+        if index < 0 or index >= self.length():
+            raise SLLException
+
+        current = self._head
+        for _ in range(index):
+            current = current.next
+
+        current.next = current.next.next
 
     def remove(self, value: object) -> bool:
-        """
-        TODO: Write this implementation
-        """
-        pass
+        current = self._head
+
+        while current.next is not None:
+            if current.next.value == value:
+                current.next = current.next.next
+                return True
+            current = current.next
+
+        return False
 
     def count(self, value: object) -> int:
-        """
-        TODO: Write this implementation
-        """
-        pass
+        result = 0
+        current = self._head.next
+
+        while current is not None:
+            if current.value == value:
+                result += 1
+            current = current.next
+
+        return result
 
     def find(self, value: object) -> bool:
-        """
-        TODO: Write this implementation
-        """
-        pass
+        current = self._head.next
+
+        while current is not None:
+            if current.value == value:
+                return True
+            current = current.next
+
+        return False
 
     def slice(self, start_index: int, size: int) -> "LinkedList":
-        """
-        TODO: Write this implementation
-        """
-        pass
+        length = self.length()
+
+        if start_index < 0 or start_index >= length:
+            raise SLLException
+        if size < 0 or start_index + size > length:
+            raise SLLException
+
+        new_list = LinkedList()
+
+        current = self._head.next
+        for _ in range(start_index):
+            current = current.next
+
+        tail = new_list._head
+        for _ in range(size):
+            new_node = SLNode(current.value)
+            tail.next = new_node
+            tail = new_node
+            current = current.next
+
+        return new_list
 
 
 # ------------------- BASIC TESTING -----------------------------------------
