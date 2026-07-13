@@ -89,7 +89,17 @@ class Queue:
 
     def enqueue(self, value: object) -> None:
         if self._current_size == self._sa.length():
-            self._double_queue()
+            new_capacity = self._sa.length() * 2
+            new_sa = StaticArray(new_capacity)
+
+            index = self._front
+            for i in range(self._current_size):
+                new_sa.set(i, self._sa.get(index))
+                index = self._increment(index)
+
+            self._sa = new_sa
+            self._front = 0
+            self._back = self._current_size - 1
 
         self._back = self._increment(self._back)
         self._sa.set(self._back, value)
