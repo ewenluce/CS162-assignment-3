@@ -88,22 +88,27 @@ class Queue:
     # ---------------------------------------------------------------------- #
 
     def enqueue(self, value: object) -> None:
-        """
-        TODO: Write this implementation
-        """
-        pass
+        if self._current_size == self._sa.length():
+            self._double_queue()
+
+        self._back = self._increment(self._back)
+        self._sa.set(self._back, value)
+        self._current_size += 1
 
     def dequeue(self) -> object:
-        """
-        TODO: Write this implementation
-        """
-        pass
+        if self.is_empty():
+            raise QueueException
+
+        value = self._sa.get(self._front)
+        self._front = self._increment(self._front)
+        self._current_size -= 1
+        return value
 
     def front(self) -> object:
-        """
-        TODO: Write this implementation
-        """
-        pass
+        if self.is_empty():
+            raise QueueException
+
+        return self._sa.get(self._front)
 
     # The method below is optional, but recommended, to implement. #
     # You may alter it in any way you see fit.                     #

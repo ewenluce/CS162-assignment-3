@@ -1,9 +1,9 @@
-# Name:
-# OSU Email:
+# Name: Ewen Luce
+# OSU Email: lucee@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
+# Assignment: 3
+# Due Date: 7/9/26
+# Description: Implementation of a Stack ADT class using a dynamic array
 
 
 from dynamic_array import *
@@ -51,22 +51,23 @@ class Stack:
     # -----------------------------------------------------------------------
 
     def push(self, value: object) -> None:
-        """
-        TODO: Write this implementation
-        """
-        pass
+        self._da.append(value)
 
     def pop(self) -> object:
-        """
-        TODO: Write this implementation
-        """
-        pass
+        if self._da.is_empty():
+            raise StackException
+
+        top_index = self._da.length() - 1
+        value = self._da.get_at_index(top_index)
+        self._da.remove_at_index(top_index)
+        return value
 
     def top(self) -> object:
-        """
-        TODO: Write this implementation
-        """
-        pass
+        if self._da.is_empty():
+            raise StackException
+
+        top_index = self._da.length() - 1
+        return self._da.get_at_index(top_index)
 
 
 # ------------------- BASIC TESTING -----------------------------------------
